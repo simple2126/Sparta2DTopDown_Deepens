@@ -4,7 +4,7 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     // 이 시간이 지나면 공격 허용
-    [SerializeField] private float healthChangeDelay = 0.2f;
+    [SerializeField] private float healthChangeDelay;
     [SerializeField] private AudioClip damageClip;
 
     private CharacterStatsHandler statsHandler;

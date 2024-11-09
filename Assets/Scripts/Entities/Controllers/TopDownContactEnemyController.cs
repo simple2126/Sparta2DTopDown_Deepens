@@ -21,12 +21,6 @@ public class TopDownContactEnemyController : TopDownEnemyController
         healthSystem.OnDamage += OnDamage;
     }
 
-    private void OnDamage()
-    {
-        // 데미지 입으면 따라옴
-        followRange = 100f;
-    }
-
     protected override void FixedUpdate()
     {
         // 단거리적은 플레이어처럼 입력을 받아서 움직이는 것은 아닙니다.
@@ -50,6 +44,12 @@ public class TopDownContactEnemyController : TopDownEnemyController
         Rotate(direction);
     }
 
+    private void OnDamage()
+    {
+        // 데미지 입으면 따라옴
+        followRange = 100f;
+    }
+
     private void Rotate(Vector2 direction)
     {
         // TopDownAimRotation에서 했었죠? 
@@ -57,6 +57,7 @@ public class TopDownContactEnemyController : TopDownEnemyController
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         characterRenderer.flipX = Mathf.Abs(rotZ) > 90f;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject receiver = collision.gameObject;
