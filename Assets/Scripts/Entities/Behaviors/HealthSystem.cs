@@ -4,7 +4,8 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     // 이 시간이 지나면 공격 허용
-    [SerializeField] private float healthChangeDelay = 0.5f;
+    [SerializeField] private float healthChangeDelay = 0.2f;
+    [SerializeField] private AudioClip damageClip;
 
     private CharacterStatsHandler statsHandler;
     // 마지막 공격을 받고 얼마나 시간이 지났는지
@@ -77,6 +78,8 @@ public class HealthSystem : MonoBehaviour
         {
             OnDamage?.Invoke();
             isAttacked = true;
+
+            if(damageClip) SoundManager.PlayClip(damageClip);
         }
 
         return true;
