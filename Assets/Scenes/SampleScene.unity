@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!212 &27958579 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8849782680670431850, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
+  m_PrefabInstance: {fileID: 6325240929432487627}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &128898051
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,6 +3096,11 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &948155165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6129374753812521457, guid: 53799e823b96c1f4ebe0a664fd63d7de, type: 3}
+  m_PrefabInstance: {fileID: 1711429384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &982570591
 GameObject:
   m_ObjectHideFlags: 0
@@ -4389,10 +4399,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2553477529677121055, guid: 53799e823b96c1f4ebe0a664fd63d7de, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6129374753812521457, guid: 53799e823b96c1f4ebe0a664fd63d7de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1711429389}
   m_SourcePrefab: {fileID: 100100000, guid: 53799e823b96c1f4ebe0a664fd63d7de, type: 3}
 --- !u!4 &1711429385 stripped
 Transform:
@@ -4404,6 +4418,20 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8568463765526928096, guid: 53799e823b96c1f4ebe0a664fd63d7de, type: 3}
   m_PrefabInstance: {fileID: 1711429384}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1711429389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948155165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4399979f1b46b4e94c75a2ca374b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createDustOnWalk: 1
+  dustParticleSystem: {fileID: 1711429386}
 --- !u!1 &1736858306
 GameObject:
   m_ObjectHideFlags: 0
@@ -5476,6 +5504,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7913283194616981607, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
+      propertyPath: targetTag
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913283194616981607, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
+      propertyPath: characterRenderer
+      value: 
+      objectReference: {fileID: 27958579}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
