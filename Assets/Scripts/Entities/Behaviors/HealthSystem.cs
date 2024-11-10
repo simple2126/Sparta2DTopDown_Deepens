@@ -10,8 +10,6 @@ public class HealthSystem : MonoBehaviour
     private CharacterStatsHandler statsHandler;
     // 마지막 공격을 받고 얼마나 시간이 지났는지
     private float timeSinceLastChange = float.MaxValue;
-    // 공격 받았는지 유무
-    private bool isAttacked = false;
 
     // 체력이 변했을 때 할 행동들을 정의하고 적용 가능
     public event Action OnDamage;
@@ -38,13 +36,12 @@ public class HealthSystem : MonoBehaviour
     private void Update()
     {
         // 공격 하지않고 끝남
-        if (isAttacked && timeSinceLastChange < healthChangeDelay)
+        if (timeSinceLastChange < healthChangeDelay)
         {
             timeSinceLastChange += Time.deltaTime;
             if (timeSinceLastChange >= healthChangeDelay)
             {
                 OnInvincibilityEnd?.Invoke();
-                isAttacked = false;
             }
         }
     }
@@ -52,7 +49,7 @@ public class HealthSystem : MonoBehaviour
     public bool ChangeHealth(float change)
     {
         // 무적 시간에는 체력이 달지 않음
-        if (timeSinceLastChange < healthChangeDelay)
+        if (change == 0 && timeSinceLastChange < healthChangeDelay)
         {
             return false;
         }
@@ -64,7 +61,7 @@ public class HealthSystem : MonoBehaviour
         // CurrentHealth = CurrentHealth > MaxHealth ? MaxHealth : CurrentHealth;
         // CurrentHealth = CurrentHealth < 0 ? 0 : CurrentHealth; 와 같아요!
 
-        if (CurrentHealth <= 0f)
+        if (CurrentHealth == 0f)
         {
             CallDeath();
             return true;
@@ -77,7 +74,6 @@ public class HealthSystem : MonoBehaviour
         else
         {
             OnDamage?.Invoke();
-            isAttacked = true;
 
             if(damageClip) SoundManager.PlayClip(damageClip);
         }

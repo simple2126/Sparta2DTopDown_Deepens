@@ -43,7 +43,6 @@ public class ObjectPool : MonoBehaviour
         GameObject obj = PoolDictionary[tag].Dequeue();
         PoolDictionary[tag].Enqueue(obj);
 
-        obj.SetActive(true);
         return obj;
     }
 }

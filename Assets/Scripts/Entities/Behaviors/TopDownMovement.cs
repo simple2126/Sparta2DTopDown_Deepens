@@ -49,11 +49,11 @@ public class TopDownMovement : MonoBehaviour
         movementDirection = direction;
     }
 
-    public void ApplyKnockback(Transform Other, float power, float duration)
+    public void ApplyKnockback(Transform other, float power, float duration)
     {
         knockbackDuration = duration;
         // 방향 other -> transform 방향
-        knockback = -(Other.position - transform.position).normalized * power;
+        knockback = -(other.position - transform.position).normalized * power;
     }
 
     private void ApplyMovement(Vector2 direction)

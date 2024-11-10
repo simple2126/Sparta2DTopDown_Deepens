@@ -24,8 +24,11 @@ public class PlayerInputController : TopDownController
         Vector2 newAim = value.Get<Vector2>();
         Vector2 worldPos = camera.ScreenToWorldPoint(newAim);
         newAim = (worldPos - (Vector2)transform.position).normalized;
-    
-        CallLookEvent(newAim);
+
+        if (newAim != Vector2.zero)
+        { 
+            CallLookEvent(newAim);
+        }
     }
 
     public void OnFire(InputValue value)

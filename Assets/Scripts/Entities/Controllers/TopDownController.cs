@@ -21,7 +21,7 @@ public class TopDownController : MonoBehaviour
         stats = GetComponent<CharacterStatsHandler>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         HandleAttackDelay();
     }
@@ -50,7 +50,7 @@ public class TopDownController : MonoBehaviour
         OnLookEvent?.Invoke(direction);
     }
 
-    private void CallAttackEvent(AttackSO attackSO)
+    public void CallAttackEvent(AttackSO attackSO)
     {
         OnAttackEvent?.Invoke(attackSO);
     }

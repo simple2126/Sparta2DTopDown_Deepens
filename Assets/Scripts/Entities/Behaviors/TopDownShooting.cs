@@ -57,6 +57,7 @@ public class TopDownShooting : MonoBehaviour
         obj.transform.position = projectileSpawnPosition.position;
         ProjectileController attackController = obj.GetComponent<ProjectileController>();
         attackController.initializeAttack(RotateVector2(aimDirection, angle), rangedAttackSO);
+        obj.SetActive(true);
 
         if(shootingClip) SoundManager.PlayClip(shootingClip);
     }

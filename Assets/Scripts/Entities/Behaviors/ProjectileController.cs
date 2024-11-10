@@ -93,10 +93,10 @@ public  class ProjectileController : MonoBehaviour
             if (healthSystem != null)
             {
                 // 충돌한 오브젝트의 체력을 감소시킵니다.
-                bool isAttackApplied = healthSystem.ChangeHealth(-attackData.power);
+                healthSystem.ChangeHealth(-attackData.power);
 
                 // 넉백이 활성화된 경우, ★드★디★어★ 넉백을 적용합니다.
-                if (isAttackApplied && attackData.isOnKnockback)
+                if (attackData.isOnKnockback)
                 {
                     ApplyKnockback(collision);
                 }
