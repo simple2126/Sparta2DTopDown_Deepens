@@ -13,7 +13,7 @@ public class SoundSource : MonoBehaviour
         CancelInvoke();
         audioSource.clip = clip;
         audioSource.volume = soundEffectVolume;
-        audioSource.pitch = 1f * Random.Range(-soundEffectVolume, soundEffectPitchVaricance); // 다양한 음향 효과
+        audioSource.pitch = 1f + Random.Range(-soundEffectPitchVaricance, soundEffectPitchVaricance); // 다양한 음향 효과
         audioSource.Play();
 
         Invoke("Disable", clip.length * 2); // clip.length -> 오디오 클립의 재생시간

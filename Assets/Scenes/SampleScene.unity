@@ -3008,7 +3008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dfbd7252a435a647abb80a341a9f96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armRenderer: {fileID: 1342405239}
+  armRenderer: {fileID: 1761570341}
   armPivot: {fileID: 1159855146}
   characterRenderer: {fileID: 1342405239}
 --- !u!114 &609044228
@@ -4584,7 +4584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1507916020
 Transform:
   m_ObjectHideFlags: 0

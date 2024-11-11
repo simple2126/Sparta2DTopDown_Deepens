@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class TopDownContactEnemyController : TopDownEnemyController
 {
@@ -12,6 +13,7 @@ public class TopDownContactEnemyController : TopDownEnemyController
     private HealthSystem healthSystem;
     private HealthSystem collidingTargetHealthSystem;
     private TopDownMovement collidingMovement;
+    private Coroutine stopAttack;
 
     protected override void Start()
     {
@@ -58,7 +60,7 @@ public class TopDownContactEnemyController : TopDownEnemyController
         characterRenderer.flipX = Mathf.Abs(rotZ) > 90f;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject receiver = collision.gameObject;
 
@@ -76,9 +78,9 @@ public class TopDownContactEnemyController : TopDownEnemyController
         collidingMovement = receiver.GetComponent<TopDownMovement>();
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if (!collision.CompareTag(targetTag))
+        if (!collision.gameObject.CompareTag(targetTag))
         {
             return;
         }
@@ -88,11 +90,18 @@ public class TopDownContactEnemyController : TopDownEnemyController
 
     private void ApplyHealthChange()
     {
+        stopAttack = StartCoroutine(); 
         AttackSO attackSO = stats.CurrentStat.attackSO;
+        Debug.Log("ApplyHealthChange");
         bool isAttackable = collidingTargetHealthSystem.ChangeHealth(-attackSO.power);
         if (isAttackable && attackSO.isOnKnockback && collidingMovement != null)
         {
             collidingMovement.ApplyKnockback(transform, attackSO.knockbackPower, attackSO.knockbackTime);
         }
+    }
+
+    private IEnumerator stopAttackCoroutine()
+    {
+        yield return new WaitForSeconds();
     }
 }
