@@ -13,7 +13,6 @@ public class TopDownContactEnemyController : TopDownEnemyController
     private HealthSystem healthSystem;
     private HealthSystem collidingTargetHealthSystem;
     private TopDownMovement collidingMovement;
-    private Coroutine stopAttack;
 
     protected override void Start()
     {
@@ -90,18 +89,16 @@ public class TopDownContactEnemyController : TopDownEnemyController
 
     private void ApplyHealthChange()
     {
-        stopAttack = StartCoroutine(); 
         AttackSO attackSO = stats.CurrentStat.attackSO;
         Debug.Log("ApplyHealthChange");
-        bool isAttackable = collidingTargetHealthSystem.ChangeHealth(-attackSO.power);
-        if (isAttackable && attackSO.isOnKnockback && collidingMovement != null)
+        bool isAttacked = collidingTargetHealthSystem.isAttacked;
+        if (!isAttacked)
         {
-            collidingMovement.ApplyKnockback(transform, attackSO.knockbackPower, attackSO.knockbackTime);
+            collidingTargetHealthSystem.ChangeHealth(-attackSO.power);
+            if (attackSO.isOnKnockback && collidingMovement != null)
+            {
+                collidingMovement.ApplyKnockback(transform, attackSO.knockbackPower, attackSO.knockbackTime);
+            }
         }
-    }
-
-    private IEnumerator stopAttackCoroutine()
-    {
-        yield return new WaitForSeconds();
     }
 }
