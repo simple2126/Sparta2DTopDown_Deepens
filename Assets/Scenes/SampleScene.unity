@@ -2703,7 +2703,7 @@ MonoBehaviour:
   pools:
   - tag: Arrow
     prefab: {fileID: 6712217898894483660, guid: 684b4374d5def204fa14f6994d05f31e, type: 3}
-    size: 20
+    size: 50
   - tag: SoundSource
     prefab: {fileID: 5719137874374872947, guid: 470356b16203d524bb6b22e673969cec, type: 3}
     size: 10
@@ -2750,6 +2750,16 @@ MonoBehaviour:
   - {fileID: 6659447480801138861, guid: d7152cb4333f39d4ebdc52f86d92aeb4, type: 3}
   - {fileID: 5840540425863685687, guid: 77f8949c4a599dc449be7611cd30bf1b, type: 3}
   - {fileID: 7399137212703547616, guid: 829c9dc1bb666cf4c9f9fed1a977a726, type: 3}
+  defaultStat:
+    statChangeType: 0
+    maxHealth: 0
+    speed: 0
+    attackSO: {fileID: 11400000, guid: 8161b94fc648cf745917633ad66c2a00, type: 2}
+  rangedStats:
+    statChangeType: 0
+    maxHealth: 0
+    speed: 0
+    attackSO: {fileID: 11400000, guid: d865ba2356803724f953135ca0c347a3, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

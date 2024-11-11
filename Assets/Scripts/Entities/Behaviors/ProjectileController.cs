@@ -10,7 +10,7 @@ public  class ProjectileController : MonoBehaviour
     private bool isReady;
 
     private SpriteRenderer spriteRenderer;
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rigidBody;
     private TrailRenderer trailRenderer;
 
     private RangedAttackSO attackData;
@@ -22,7 +22,7 @@ public  class ProjectileController : MonoBehaviour
     {
         // Arrow 아래에 있는 renderer 가져옴
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
     }
 
@@ -40,7 +40,7 @@ public  class ProjectileController : MonoBehaviour
             DestroyProjectile(transform.position, false);
         }
 
-        rigidbody.velocity = direction * attackData.speed;
+        rigidBody.velocity = direction * attackData.speed;
     }
 
     public void initializeAttack(Vector2 direction, RangedAttackSO attackData)

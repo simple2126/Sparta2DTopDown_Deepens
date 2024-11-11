@@ -65,7 +65,7 @@ public class CharacterStatsHandler : MonoBehaviour
         {
             StatsChangeType.Add => (current, change) => current + change,
             StatsChangeType.Multiple => (current, change) => current * change,
-            StatsChangeType.Override => (current, change) => change,
+            _ => (current, change) => change,
         };
 
         UpdateBasicStats(operation, modifier);

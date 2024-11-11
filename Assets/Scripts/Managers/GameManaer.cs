@@ -8,6 +8,17 @@ using UnityEngine.UI;
 using static ObjectPool;
 using Random = UnityEngine.Random;
 
+public enum UpgradeOption
+{
+    MaxHealth,
+    AttackPower,
+    Speed,
+    Knockback,
+    AttackDelay,
+    NumberOfProjectiles,
+    COUNT // enum의 개수
+}
+
 public class GameManaer : MonoBehaviour
 {
     public static GameManaer Instance;
@@ -36,6 +47,9 @@ public class GameManaer : MonoBehaviour
 
     [SerializeField] private List<GameObject> rewards = new List<GameObject>();
 
+    [SerializeField] private CharacterStat defaultStat;
+    [SerializeField] private CharacterStat rangedStats;
+
     private void Awake()
     {
         if ( Instance != null ) Destroy(Instance);
@@ -59,6 +73,15 @@ public class GameManaer : MonoBehaviour
     private void Start()
     {
         StartCoroutine(StartNextWave());
+    }
+
+    private void UpgradeStatInit()
+    {
+        defaultStat.statChangeType = StatsChangeType.Add;
+        defaultStat.attackSO = Instantiate(defaultStat.attackSO);
+
+        rangedStats.statChangeType = StatsChangeType.Add;
+        rangedStats.attackSO = Instantiate(rangedStats.attackSO);
     }
 
     private IEnumerator StartNextWave()
@@ -105,12 +128,6 @@ public class GameManaer : MonoBehaviour
         }
     }
 
-    // 몬스터 쎄짐
-    private void RandomUpgrade()
-    {
-        Debug.Log("RandomUpgrade 호출");
-    }
-
     // 몬스터 생성 수 증가
     private void IncreaseSpawnPositions()
     {
@@ -151,8 +168,43 @@ public class GameManaer : MonoBehaviour
     {
         int prefabIdx = Random.Range(0, enemyPrefabs.Count);
         GameObject enemy = Instantiate(enemyPrefabs[prefabIdx], spawnPositions[posIdx].position, Quaternion.identity);
+        enemy.GetComponent<CharacterStatsHandler>().AddStatModifier(defaultStat);
+        enemy.GetComponent<CharacterStatsHandler>().AddStatModifier(rangedStats);
         enemy.GetComponent<HealthSystem>().OnDeath += OnEnemyDeath;
         currentSpawnCount++;
+    }
+
+
+    // 몬스터 쎄짐
+    private void RandomUpgrade()
+    {
+        UpgradeOption option = (UpgradeOption)Random.Range(0, (int)UpgradeOption.COUNT);
+        switch (option)
+        {
+            case UpgradeOption.MaxHealth:
+                defaultStat.maxHealth += 2;
+                break;
+            case UpgradeOption.AttackPower:
+                defaultStat.attackSO.power += 1;
+                break;
+            case UpgradeOption.Speed:
+                defaultStat.speed += 0.1f;
+                break;
+            case UpgradeOption.Knockback:
+                defaultStat.attackSO.isOnKnockback = true;
+                defaultStat.attackSO.knockbackPower += 1;
+                defaultStat.attackSO.knockbackTime = 0.1f;
+                break;
+            case UpgradeOption.AttackDelay:
+                defaultStat.attackSO.delay -= 0.05f;
+                break;
+            case UpgradeOption.NumberOfProjectiles:
+                RangedAttackSO rangedAttackData = rangedStats.attackSO as RangedAttackSO;
+                if (rangedAttackData != null) rangedAttackData.numberOfProjectilesPerShoot += 1;
+                break;
+            default: 
+                break;
+        }
     }
 
     private void OnEnemyDeath()
