@@ -5,15 +5,15 @@ public abstract class PickupItem : MonoBehaviour
 {
     [SerializeField] private AudioClip pickupSound;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // 아이템 효과
-        OnPickedUp(collision.gameObject);
-        
-        if(pickupSound != null) SoundManager.PlayClip(pickupSound);
+        OnPickedUp(other.gameObject);
+
+        if (pickupSound) SoundManager.PlayClip(pickupSound);
 
         Destroy(gameObject);
     }
 
-    protected abstract void OnPickedUp(GameObject gameObject);
+    protected abstract void OnPickedUp(GameObject receiver);
 }

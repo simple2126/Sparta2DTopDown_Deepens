@@ -34,6 +34,8 @@ public class GameManaer : MonoBehaviour
     [SerializeField] private Transform spawnPositionRoot;
     private List<Transform> spawnPositions = new List<Transform>();
 
+    [SerializeField] private List<GameObject> rewards = new List<GameObject>();
+
     private void Awake()
     {
         if ( Instance != null ) Destroy(Instance);
@@ -119,7 +121,11 @@ public class GameManaer : MonoBehaviour
     // 포션이 들어옴
     private void CreateReward()
     {
-        Debug.Log("CreateReward 호출");
+        int selectedRewardIndex = Random.Range(0, rewards.Count);
+        int randomPositionIndex = Random.Range(0, spawnPositions.Count);
+
+        GameObject obj = rewards[selectedRewardIndex];
+        Instantiate(obj, spawnPositions[randomPositionIndex].position, Quaternion.identity);
     }
 
     // 위치 늘어남

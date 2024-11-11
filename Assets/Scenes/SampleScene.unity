@@ -2380,63 +2380,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &292528987
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 167330044171522105, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
-      propertyPath: m_Name
-      value: Goblin
-      objectReference: {fileID: 0}
-    - target: {fileID: 729238320228268661, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 729238320228268661, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.933
-      objectReference: {fileID: 0}
-    - target: {fileID: 729238320228268661, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 729238320228268661, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 729238320228268661, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 729238320228268661, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 729238320228268661, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 729238320228268661, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 729238320228268661, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 729238320228268661, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
 --- !u!1 &369369137
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,6 +2746,10 @@ MonoBehaviour:
   - {fileID: 167330044171522105, guid: 96db2a0b350625b4b99b6929a2d94f38, type: 3}
   - {fileID: 4372347662865702477, guid: 38217300df3abf346ac1fcddd7376e96, type: 3}
   spawnPositionRoot: {fileID: 1507916020}
+  rewards:
+  - {fileID: 6659447480801138861, guid: d7152cb4333f39d4ebdc52f86d92aeb4, type: 3}
+  - {fileID: 5840540425863685687, guid: 77f8949c4a599dc449be7611cd30bf1b, type: 3}
+  - {fileID: 7399137212703547616, guid: 829c9dc1bb666cf4c9f9fed1a977a726, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,7 +3107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 760833390}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4195,7 +4142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1159855146}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WeaponPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4642,7 +4589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1507916020
 Transform:
   m_ObjectHideFlags: 0
@@ -5060,7 +5007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1761570340}
   - component: {fileID: 1761570341}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WeaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6010,4 +5957,3 @@ SceneRoots:
   - {fileID: 1937912218}
   - {fileID: 434377722}
   - {fileID: 1507916020}
-  - {fileID: 292528987}
