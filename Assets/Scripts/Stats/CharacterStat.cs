@@ -14,7 +14,7 @@ public class CharacterStat
 {
     public StatsChangeType statChangeType;
     // 슬라이더 생성
-    [Range(1, 100)] public int maxHealth;
-    [Range(1f, 20f)] public float speed;
+    [Range(0, 100)] public int maxHealth;
+    [Range(0f, 20f)] public float speed;
     public AttackSO attackSO;
 }
