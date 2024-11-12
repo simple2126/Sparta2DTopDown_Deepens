@@ -45,7 +45,14 @@ public class TopDownShooting : MonoBehaviour
         {
             float angle = minAngle + i * projecTileAngleSpace;
             float randomSpread = Random.Range(-rangedAttackSO.spread, rangedAttackSO.spread);
-            angle += randomSpread;
+            switch (rangedAttackSO.bulletNameTag)
+            {
+                case "Arrow": angle += randomSpread; break;
+                case "Bullet": angle += randomSpread; break;
+                case "Bomb": angle += randomSpread;  break;
+                case "Magic": angle = 360f; break;
+                default: angle += randomSpread; break;
+            }
             // 투사체 생성
             CreateProjectile(rangedAttackSO, angle);
         }

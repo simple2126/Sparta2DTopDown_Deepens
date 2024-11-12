@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32af2169186f38743a4bdc83e77eca61, type: 3}
-  m_Name: PlayerDefaultAttackSO
+  m_Name: PlayerDefaultBulletAttackSO
   m_EditorClassIdentifier: 
   size: 1
   delay: 0.15
@@ -19,12 +19,12 @@ MonoBehaviour:
   target:
     serializedVersion: 2
     m_Bits: 64
-  isOnKnockBack: 1
+  isOnKnockback: 0
   knockbackPower: 5
   knockbackTime: 0.1
-  bulletNameTag: Arrow
-  duration: 5
-  spread: 4
+  bulletNameTag: Bullet
+  duration: 4
+  spread: 0
   numberOfProjectilesPerShoot: 1
   multipleProjectilesAngle: 7
   projectileColor: {r: 1, g: 1, b: 1, a: 1}

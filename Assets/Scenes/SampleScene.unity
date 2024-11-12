@@ -2707,6 +2707,15 @@ MonoBehaviour:
   - tag: SoundSource
     prefab: {fileID: 5719137874374872947, guid: 470356b16203d524bb6b22e673969cec, type: 3}
     size: 10
+  - tag: Bullet
+    prefab: {fileID: 1297013511375838697, guid: 4dac5bf5ba2a4894482be29d068db815, type: 3}
+    size: 50
+  - tag: Bomb
+    prefab: {fileID: 2587544528384432184, guid: f29ab55df8b931c40bf13fc5adca9f2f, type: 3}
+    size: 50
+  - tag: Fireball
+    prefab: {fileID: 2923722994158512152, guid: e430ca076e3f8d4418033df6f13db68a, type: 3}
+    size: 50
 --- !u!4 &481601556
 Transform:
   m_ObjectHideFlags: 0
@@ -3055,7 +3064,7 @@ MonoBehaviour:
     statChangeType: 2
     maxHealth: 10
     speed: 5
-    attackSO: {fileID: 11400000, guid: da78e10f2a658e141949912717ff101d, type: 2}
+    attackSO: {fileID: 11400000, guid: f63c706991ba5424cbe9ef6c12aeaca3, type: 2}
   statModifiers: []
 --- !u!114 &609044231
 MonoBehaviour:
