@@ -96,6 +96,7 @@ public class GameManaer : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
                 ProcessWaveConditions();
+                ChangeCharacterConditions();
 
                 yield return StartCoroutine(SpawnEnemiesInWave());
 
@@ -127,6 +128,21 @@ public class GameManaer : MonoBehaviour
         {
             IncreaseWaveSpawnCount();
         }
+    }
+
+    private void ChangeCharacterConditions()
+    {
+        if(currentWaveIndex % 20 == 10)
+        {
+            DebuffPlayer();
+        }
+    }
+
+    private void DebuffPlayer()
+    {
+        int random = Random.Range(0, 50);
+        float health = playerHealthSystem.CurrentHealth * random / 100;
+        playerHealthSystem.ChangeHealth(-health);
     }
 
     // 몬스터 생성 수 증가
