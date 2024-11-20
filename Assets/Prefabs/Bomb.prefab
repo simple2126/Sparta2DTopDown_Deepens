@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4757232970927784376}
   - component: {fileID: 6422103508809062036}
   - component: {fileID: 5726576977484040846}
+  - component: {fileID: -1021272810447048834}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -181,7 +182,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0.9667849, b: 0, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -213,7 +214,7 @@ TrailRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
-    textureScale: {x: 1, y: 1}
+    textureScale: {x: 3, y: 3}
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.01
@@ -236,6 +237,54 @@ MonoBehaviour:
   levelCollisionLayer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &-1021272810447048834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587544528384432184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e3ab1cb67d62484ca0f96b637663c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animCurv:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 3.0698504
+      outSlope: 3.0698504
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.0753221
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -3.5855901
+      outSlope: -3.5855901
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.10703683
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  flightSpeed: 0.5
+  target: {fileID: 2587544528384432184}
+  hoverHeight: 0.3
 --- !u!1 &8323509720663483572
 GameObject:
   m_ObjectHideFlags: 0

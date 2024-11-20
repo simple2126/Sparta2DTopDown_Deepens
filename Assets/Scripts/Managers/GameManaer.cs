@@ -33,6 +33,7 @@ public class GameManaer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI waveText;
     [SerializeField] private Slider hpGaugeSlider;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject gameStopUI;
 
     [SerializeField] private int currentWaveIndex = 0;
     private int currentSpawnCount = 0;
@@ -218,6 +219,12 @@ public class GameManaer : MonoBehaviour
         gameOverUI.SetActive(true);
     }
 
+    public void GameStop()
+    {
+        Time.timeScale = 0f;
+        gameStopUI.SetActive(true);
+    }
+
     private void UpdateHealthUI()
     {
         hpGaugeSlider.value = playerHealthSystem.CurrentHealth / playerHealthSystem.MaxHealth;
@@ -232,6 +239,12 @@ public class GameManaer : MonoBehaviour
     {
         // æ¿ ¿Œµ¶Ω∫∏¶ ≈Î«ÿ ∑ŒµÂæ¿ ¡¯«‡
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1.0f;
+        gameStopUI.SetActive(false);
     }
 
     public void ExitGame()

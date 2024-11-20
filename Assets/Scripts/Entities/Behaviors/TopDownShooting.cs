@@ -41,7 +41,7 @@ public class TopDownShooting : MonoBehaviour
 
         float minAngle = -(numberOfProjectilesPerShot / 2f) * projecTileAngleSpace + 0.5f * rangedAttackSO.multipleProjectilesAngle;
 
-        for (int i =0;i < numberOfProjectilesPerShot; i++)
+        for (int i = 0; i < numberOfProjectilesPerShot; i++)
         {
             float angle = minAngle + i * projecTileAngleSpace;
             float randomSpread = Random.Range(-rangedAttackSO.spread, rangedAttackSO.spread);

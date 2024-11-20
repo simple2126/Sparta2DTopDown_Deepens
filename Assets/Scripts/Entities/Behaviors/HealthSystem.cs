@@ -43,7 +43,6 @@ public class HealthSystem : MonoBehaviour
             currentInvincibilityTime += Time.deltaTime;
             if (currentInvincibilityTime >= invincibleDuration)
             {
-                Debug.Log("InvincibilityEnd");
                 OnInvincibilityEnd?.Invoke();
                 currentInvincibilityTime = 0f;
                 isAttacked = false;
