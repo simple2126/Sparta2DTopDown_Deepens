@@ -90,7 +90,6 @@ public class TopDownContactEnemyController : TopDownEnemyController
     private void ApplyHealthChange()
     {
         AttackSO attackSO = stats.CurrentStat.attackSO;
-        Debug.Log("ApplyHealthChange");
         bool isAttacked = collidingTargetHealthSystem.isAttacked;
         if (!isAttacked)
         {
