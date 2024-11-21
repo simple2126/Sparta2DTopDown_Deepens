@@ -29,6 +29,17 @@ Q1. 심화주차 1-3강 ( UI 만들기 )
 
 Resume Game이라는 텍스트가 들어있는 버튼을 만들고, 그 버튼을 누르면 게임이 재개되게 하세요.
 
+    public void GameStop()
+    {
+        Time.timeScale = 0f;
+        gameStopUI.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1.0f;
+        gameStopUI.SetActive(false);
+    }
 
 Q2. 심화주차 1-4강 ( 게임로직 수정 )
 확인 문제 : 강의를 듣고, 강의 내용을 다시 점검하는 문제를 풀어봅시다.
@@ -90,12 +101,34 @@ C#에서 한 클래스는 여러 개의 추상 클래스를 상속받을 수 있
 XX님 고생하셨습니다. 아래 내용들에 관련된 코드를 정리해보면 가독성이 높아질 것 같습니다.
 
 Awake 메소드 내의 초기화 코드를 분리하는 것이 더 깔끔해보일 것 같습니다.
+    private void Awake()
+    {
+        UpdateCharacterStat();
+        InitialAttackSO();
+    }
+
+    private void InitialAttackSO()
+    {
+        if (baseStat.attackSO != null)
+        {
+            // 일단 복사해놓기
+            baseStat.attackSO = Instantiate(baseStat.attackSO);
+            CurrentStat.attackSO = Instantiate(baseStat.attackSO);
+        }
+    }
+
 ApplyStatModifiers 메소드 내의 switch식의 코드를 분리하면 가독성이 높아질 것 같습니다.
 
         Func<float, float, float> operation;
         switch (modifier.statChangeType)
         {
-            case StatsChangeType.Add: operation = (current, change) => current + change; break;
-            case StatsChangeType.Multiple: operation = (current, change) => current * change; break;
-            default: operation = (current, change) => change; break;
+            case StatsChangeType.Add:
+                operation = (current, change) => current + change;
+                break;
+            case StatsChangeType.Multiple:
+                operation = (current, change) => current * change;
+                break;
+            default:
+                operation = (current, change) => change;
+                break;
         }
