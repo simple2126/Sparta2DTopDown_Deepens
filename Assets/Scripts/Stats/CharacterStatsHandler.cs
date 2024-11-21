@@ -61,12 +61,14 @@ public class CharacterStatsHandler : MonoBehaviour
 
     private void ApplyStatModifier(CharacterStat modifier)
     {
-        Func<float, float, float> operation = modifier.statChangeType switch
+        Func<float, float, float> operation;
+        switch (modifier.statChangeType)
         {
-            StatsChangeType.Add => (current, change) => current + change,
-            StatsChangeType.Multiple => (current, change) => current * change,
-            _ => (current, change) => change,
-        };
+            case StatsChangeType.Add: operation = (current, change) => current + change; break;
+            case StatsChangeType.Multiple: operation = (current, change) => current * change; break;
+            default: operation = (current, change) => change; break;
+        }
+
 
         UpdateBasicStats(operation, modifier);
         UpdateAttackStats(operation, modifier);

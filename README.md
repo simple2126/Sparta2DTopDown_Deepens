@@ -52,6 +52,21 @@ SetActive(false)나 Destroy(gameObject)를 했을 경우 코루틴은 즉시 종
 랜덤 디버프는 체력을 0%~50%를 감소시키는 무시무시👹한 디버프입니다.
 플레이어의 HP를 실제 감소시키는 것까지 구현해봅시다. (Debug.Log만 하는 것 아님)
 
+    private void ChangeCharacterConditions()
+    {
+        if(currentWaveIndex % 20 == 10)
+        {
+            DebuffPlayer();
+        }
+    }
+
+    private void DebuffPlayer()
+    {
+        int random = Random.Range(0, 50);
+        float health = playerHealthSystem.CurrentHealth * random / 100;
+        playerHealthSystem.ChangeHealth(-health);
+    }
+
 
 Q3. 심화주차 1-5, 1-6강 ( 스텟 강화 - 플레이어 강화 아이템 구현 )
 확인 문제 : 강의를 듣고, 내용을 다시 점검하는 문제를 풀어봅시다.
@@ -77,3 +92,10 @@ XX님 고생하셨습니다. 아래 내용들에 관련된 코드를 정리해�
 Awake 메소드 내의 초기화 코드를 분리하는 것이 더 깔끔해보일 것 같습니다.
 ApplyStatModifiers 메소드 내의 switch식의 코드를 분리하면 가독성이 높아질 것 같습니다.
 
+        Func<float, float, float> operation;
+        switch (modifier.statChangeType)
+        {
+            case StatsChangeType.Add: operation = (current, change) => current + change; break;
+            case StatsChangeType.Multiple: operation = (current, change) => current * change; break;
+            default: operation = (current, change) => change; break;
+        }
