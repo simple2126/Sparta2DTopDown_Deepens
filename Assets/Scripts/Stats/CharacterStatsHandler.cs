@@ -28,8 +28,12 @@ public class CharacterStatsHandler : MonoBehaviour
     private void Awake()
     {
         UpdateCharacterStat();
-    
-        if(baseStat.attackSO != null)
+        InitialAttackSO();
+    }
+
+    private void InitialAttackSO()
+    {
+        if (baseStat.attackSO != null)
         {
             // 일단 복사해놓기
             baseStat.attackSO = Instantiate(baseStat.attackSO);
@@ -64,11 +68,16 @@ public class CharacterStatsHandler : MonoBehaviour
         Func<float, float, float> operation;
         switch (modifier.statChangeType)
         {
-            case StatsChangeType.Add: operation = (current, change) => current + change; break;
-            case StatsChangeType.Multiple: operation = (current, change) => current * change; break;
-            default: operation = (current, change) => change; break;
+            case StatsChangeType.Add:
+                operation = (current, change) => current + change;
+                break;
+            case StatsChangeType.Multiple:
+                operation = (current, change) => current * change;
+                break;
+            default:
+                operation = (current, change) => change;
+                break;
         }
-
 
         UpdateBasicStats(operation, modifier);
         UpdateAttackStats(operation, modifier);
